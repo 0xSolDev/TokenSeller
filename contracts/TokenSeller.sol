@@ -16,10 +16,6 @@ contract TokenSeller is OwnableUpgradeable{
 	address[] proxies;
 	AggregatorV3Interface[] internal priceFeed;
 
-	/**/// @title A title that should describe the contract/interface
-	/// @author The name of the author
-	/// @notice Explain to an end user what this does
-	/// @dev Explain to a developer any extra details */
 	function initialize(address _sellToken, address[] memory _buyTokens, address _tokenOwner)
 		external
 		initializer
@@ -30,7 +26,7 @@ contract TokenSeller is OwnableUpgradeable{
 		buyTokens = _buyTokens;
 		tokenOwner = _tokenOwner;
 	}
-	/**
+	/*
 		* @param _price the price of the sellToken
 	 */
 	function setPrice(uint256 _price) external {
@@ -38,8 +34,8 @@ contract TokenSeller is OwnableUpgradeable{
 		require(_price > 0, 'setPrice : price must be greater than 0');
 		price = _price;
 	}
-	/**
-		* @param _price arrary of the address that are listed on ChainLink Ethereum Data Feeds
+	/*
+		 @param _price arrary of the address that are listed on ChainLink Ethereum Data Feeds
 		https://docs.chain.link/docs/ethereum-addresses/
 
 		@requirements
@@ -55,7 +51,7 @@ contract TokenSeller is OwnableUpgradeable{
 		}
 		proxies = _proxies;
 	}
-	/**
+	/*
 		* @param _to address that will transfer tokens unpon destrying contracts
 	 */
 	function destroyContract(address payable _to) external {
